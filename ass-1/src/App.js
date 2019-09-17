@@ -12,7 +12,7 @@ class App extends Component {
     ]
   };
 
-  changeUserOutput = (event) => {
+  changeUserOutputHandler = (event) => {
     this.setState({
       userOutput: [
         { username: event.target.value },
@@ -28,7 +28,7 @@ class App extends Component {
     }
     return (
       <div className="App" style={style}>
-        <UserInput changed={this.changeUserOutput} oldValue={this.state.userOutput[0].username}></UserInput>
+        <UserInput changed={this.changeUserOutputHandler} oldValue={this.state.userOutput[0].username}></UserInput>
         <UserOutput username={this.state.userOutput[0].username}></UserOutput>
         <UserOutput username={this.state.userOutput[1].username}></UserOutput>
       </div>
