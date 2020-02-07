@@ -9,9 +9,10 @@ const cockpit = (props) => {
         // const timer = setTimeout(() => {
         //     alert('Saved data to cloud!');
         // }, 1000);
-        setTimeout(() => {
-            alert('Saved data to cloud!');
-        }, 1000);
+        // commenting out, because this is annoying
+        // setTimeout(() => {
+        //     alert('Saved data to cloud!');
+        // }, 1000);
         return () => {
             // clearTimeout(timer);
             console.log('[Cockpit.js] cleanup work in useEffect');
@@ -20,7 +21,7 @@ const cockpit = (props) => {
     // runs return function (cleanup function) on unmount
     // }, [props.persons]);
 
-    useEffect(()=> {
+    useEffect(() => {
         console.log('[Cockpit.js] 2nd useEffect');
         return () => {
             console.log('[Cockpit.js] cleanup work in 2nd useEffect');

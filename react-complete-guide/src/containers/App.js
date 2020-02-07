@@ -4,6 +4,9 @@ import React, {
 import styles from './App.module.css';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
+//import WithClass from '../hoc/WithClass';
+import withClass from '../hoc/withClass';
+import Aux from '../hoc/Auxiliary';
 
 class App extends Component {
   constructor(props) {
@@ -85,7 +88,7 @@ class App extends Component {
     }
 
     return (
-      <div className={styles.App}>
+      <Aux>
         <button onClick={() => {
           this.setState({ showCockpit: false })
         }}>
@@ -97,9 +100,39 @@ class App extends Component {
           clicked={this.togglePersonsHandler} />
           : null}
         {persons}
-      </div>
+      </Aux>
     );
+    // return (
+    //   <WithClass classes={styles.App}>
+    //     <button onClick={() => {
+    //       this.setState({ showCockpit: false })
+    //     }}>
+    //       Remove Cockpit</button>
+    //     {this.state.showCockpit ? <Cockpit
+    //       title={this.props.appTitle}
+    //       showPersons={this.state.showPersons}
+    //       personsLength={this.state.persons.length}
+    //       clicked={this.togglePersonsHandler} />
+    //       : null}
+    //     {persons}
+    //   </WithClass>
+    // );
+    // return (
+    //   <div className={styles.App}>
+    //     <button onClick={() => {
+    //       this.setState({ showCockpit: false })
+    //     }}>
+    //       Remove Cockpit</button>
+    //     {this.state.showCockpit ? <Cockpit
+    //       title={this.props.appTitle}
+    //       showPersons={this.state.showPersons}
+    //       personsLength={this.state.persons.length}
+    //       clicked={this.togglePersonsHandler} />
+    //       : null}
+    //     {persons}
+    //   </div>
+    // );
   }
 }
 
-export default App;
+export default withClass(App, styles.App);
