@@ -1,7 +1,10 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
+
 //import styles from './Person.css';
 //import Aux from '../../../hoc/Auxiliary';
-
+import withClass from '../../../hoc/withClass';
+import styles from './Person.css';
 
 class Person extends Component {
   render() {
@@ -31,4 +34,13 @@ class Person extends Component {
   }
 };
 
-export default Person;
+// this is useful when developing components that others besides you will use
+// in the future.  3rd party, or for large teams.
+Person.propTypes = {
+  click: PropTypes.func,
+  name: PropTypes.string,
+  age: PropTypes.number,
+  changed: PropTypes.func
+};
+
+export default withClass(Person, styles.Person);

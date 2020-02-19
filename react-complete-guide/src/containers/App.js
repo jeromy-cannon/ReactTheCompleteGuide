@@ -16,12 +16,13 @@ class App extends Component {
 
   state = {
     persons: [
-      { id: '001', name: 'Max', age: '28' },
-      { id: '002', name: 'Manu', age: '29' },
-      { id: '003', name: 'Stephanie', age: '26' }
+      { id: '001', name: 'Max', age: 28 },
+      { id: '002', name: 'Manu', age: 29 },
+      { id: '003', name: 'Stephanie', age: 26 }
     ],
     showPersons: false,
-    showCockpit: true
+    showCockpit: true,
+    changeCounter: 0
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -60,9 +61,21 @@ class App extends Component {
     const persons = [...this.state.persons];
     persons[personIndex] = person;
 
-    this.setState({
-      persons: persons
+    // this guarantees that you are updating the correct value for the
+    // change counter from the previous value
+    // this is needed when you are dependent on the previous state value
+    this.setState((prevState, props) => {
+      return {
+        persons: persons,
+        changeCounter: prevState.changeCounter + 1
+      };
     })
+    // // this does not execute immediately, 
+    // // but when React things it is a good time to do so
+    // this.setState({
+    //   persons: persons,
+    //   changeCounter: this.state.changeCounter + 1
+    // })
   }
 
   deletePersonHandler = (personIndex) => {
