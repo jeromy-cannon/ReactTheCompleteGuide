@@ -25,7 +25,9 @@ class NewPost extends Component {
         axios.post('/posts', data)
             .then(response => {
                 console.log(response);
-                this.setState({ submitted: true });
+                // this.props.history.push('/posts'); // redirects but activates the back button
+                this.props.history.replace('/posts'); // same as redirecting
+                // this.setState({ submitted: true }); // for redirecting
             });
     }
 
